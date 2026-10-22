@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "usuarios": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "lecturas": {
+          ".indexOn": ["ts"],
+          "$id": {
+            ".validate": "newData.hasChildren(['temp', 'ts']) && newData.child('temp').isNumber() && newData.child('temp').val() >= -50 && newData.child('temp').val() <= 150"
+          }
+        },
+        "config": {
+          "umbral": { ".validate": "newData.isNumber()" }
+        }
+      }
+    }
+  }
+}

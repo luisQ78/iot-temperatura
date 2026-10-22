@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monitor de temperatura"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTempActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/tvEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esperando datos..."
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUltima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.example.iottemp.SimpleLineChartView
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Estadísticas (últimas 50 lecturas)"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:stretchColumns="1">
+
+            <TableRow android:background="#22888888" android:padding="8dp">
+                <TextView android:text="Métrica" android:textStyle="bold" />
+                <TextView android:gravity="end" android:text="Valor" android:textStyle="bold" />
+            </TableRow>
+            <TableRow android:padding="8dp">
+                <TextView android:text="Última lectura" />
+                <TextView android:id="@+id/tvLast" android:gravity="end" android:text="--" />
+            </TableRow>
+            <TableRow android:background="#11888888" android:padding="8dp">
+                <TextView android:text="Mínima" />
+                <TextView android:id="@+id/tvMin" android:gravity="end" android:text="--" />
+            </TableRow>
+            <TableRow android:padding="8dp">
+                <TextView android:text="Máxima" />
+                <TextView android:id="@+id/tvMax" android:gravity="end" android:text="--" />
+            </TableRow>
+            <TableRow android:background="#11888888" android:padding="8dp">
+                <TextView android:text="Promedio" />
+                <TextView android:id="@+id/tvAvg" android:gravity="end" android:text="--" />
+            </TableRow>
+            <TableRow android:padding="8dp">
+                <TextView android:text="Desviación estándar" />
+                <TextView android:id="@+id/tvStd" android:gravity="end" android:text="--" />
+            </TableRow>
+            <TableRow android:background="#11888888" android:padding="8dp">
+                <TextView android:text="N.º de lecturas" />
+                <TextView android:id="@+id/tvCount" android:gravity="end" android:text="--" />
+            </TableRow>
+            <TableRow android:padding="8dp">
+                <TextView android:text="Lecturas sobre el umbral" />
+                <TextView android:id="@+id/tvOver" android:gravity="end" android:text="--" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Umbral de alerta (°C)"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etUmbral"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="30"
+                android:inputType="numberDecimal|numberSigned" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guardar" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
